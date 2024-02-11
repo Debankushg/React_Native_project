@@ -6,6 +6,7 @@ import {
   TouchableHighlight,
   Text,
   StyleSheet,
+  ImageBackground,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -13,14 +14,13 @@ const Login = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const navigation = useNavigation();
-
+  const backgroundImage = require("../assets/login.jpg");
   const handleSubmit = () => {
     const data = { name, email };
     if (data.email === "" && data.name === "") {
       alert(`Please Fill your Name and Email`);
     } else {
       // alert(`Form Submitted!\nName: ${name}\nEmail: ${email}`);
-      // Navigate to the Home screen or perform any other action
       navigation.navigate("Home", { email, name });
     }
   };
@@ -37,65 +37,74 @@ const Login = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login Form</Text>
+    <ImageBackground source={backgroundImage} style={styles.container}>
+      <View style={styles.overlay}></View>
+      <View style={styles.container}>
+        <Text style={styles.title}>Welcome to Deb's Shop</Text>
 
-      {/* Name Input */}
-      <TextInput
-        style={styles.input}
-        placeholder="Name"
-        value={name}
-        onChangeText={(text) => setName(text)}
-      />
+        {/* Name Input */}
+        <TextInput
+          style={styles.input}
+          placeholderTextColor="#ccc"
+          placeholder="Name"
+          value={name}
+          onChangeText={(text) => setName(text)}
+        />
 
-      {/* Email Input */}
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-        keyboardType="email-address"
-      />
+        {/* Email Input */}
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor="#ccc"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+          keyboardType="email-address"
+        />
 
-      {/* Submit Button */}
-      <TouchableHighlight
-        style={styles.button}
-        onPress={handleSubmit}
-        underlayColor="#3498db"
-      >
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableHighlight>
-
-      {/* Register Button */}
-      <View
-        style={{ flexDirection: "row", alignItems: "center", marginBottom: 2 }}
-      >
-        <Text style={{ fontSize: 18, color: "gray" }}>
-          Don't have an account?
-        </Text>
+        {/* Submit Button */}
         <TouchableHighlight
-          style={styles.linkButton}
-          onPress={handleRegister}
-          underlayColor="transparent"
+          style={styles.button}
+          onPress={handleSubmit}
+          underlayColor="#3498db"
         >
-          <Text style={styles.linkButtonText}>Register</Text>
+          <Text style={styles.buttonText}>Login</Text>
         </TouchableHighlight>
-      </View>
 
-      {/* Forgot Password Button */}
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <Text style={{ fontSize: 18, color: "gray" }}>
-          Forgot your password?
-        </Text>
-        <TouchableHighlight
-          style={styles.linkButton}
-          onPress={handleForgotPassword}
-          underlayColor="transparent"
+        {/* Register Button */}
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            marginBottom: 2,
+          }}
         >
-          <Text style={styles.linkButtonText}>Reset</Text>
-        </TouchableHighlight>
+          <Text style={{ fontSize: 18, color: "#ccc" }}>
+            Don't have an account?
+          </Text>
+          <TouchableHighlight
+            style={styles.linkButton}
+            onPress={handleRegister}
+            underlayColor="transparent"
+          >
+            <Text style={styles.linkButtonText}>Register</Text>
+          </TouchableHighlight>
+        </View>
+
+        {/* Forgot Password Button */}
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <Text style={{ fontSize: 18, color: "#cccc" }}>
+            Forgot your password?
+          </Text>
+          <TouchableHighlight
+            style={styles.linkButton}
+            onPress={handleForgotPassword}
+            underlayColor="transparent"
+          >
+            <Text style={styles.linkButtonText}>Reset</Text>
+          </TouchableHighlight>
+        </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -105,21 +114,28 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
-    backgroundColor: "#a2e8b5",
+    width:"105%"
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0, 0, 0, 0.7)", // Adjust opacity by changing the last value (0.5)
   },
   title: {
-    fontSize: 24,
+    fontSize: 30,
+    fontWeight:"800",
     marginBottom: 16,
+    color: "#e5ed00",
   },
   input: {
     height: 40,
     borderColor: "gray",
     borderWidth: 1,
     marginBottom: 16,
-    padding:10,
-    width: "80%",
-    borderRadius:8,
-    textAlign:"center"
+    paddingHorizontal: 20, 
+    width: "80%", 
+    borderRadius: 8,
+    // textAlign: "center",
+    color:"#CCC"
   },
   button: {
     backgroundColor: "#2980b9",

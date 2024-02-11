@@ -33,7 +33,7 @@ export default function App() {
           name="Login"
           component={Login}
           options={{
-            title: "User Login",
+            title: "Welcome",
           }}
         />
         <Stack.Screen
