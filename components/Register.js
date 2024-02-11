@@ -17,7 +17,7 @@ const Register = () => {
 
   const handleSubmit = () => {
     const data = { name, email, address, phoneNo };
-    console.log(data);
+    // console.log(data);
     if (data) {
       alert(
         `Form Submitted!\nName: ${name}\nEmail: ${email}\nAddress:${address}\nPhone-No:${phoneNo}`

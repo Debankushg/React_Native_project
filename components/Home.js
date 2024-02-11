@@ -1,7 +1,7 @@
 import React from "react";
-import { Text,FlatList, StyleSheet, View } from "react-native";
+import { Text, FlatList, StyleSheet, View } from "react-native";
 
-const Home = () => {
+const Home = (props) => {
   data = [
     {
       id: "1",
@@ -52,30 +52,42 @@ const Home = () => {
       name: "Puja",
     },
   ];
-  return(
-    <View style={{ marginBottom:70, backgroundColor:'#3b82f680'}}>
-    <Text style={{fontSize:30, padding:10,textAlign:'center',color:'#3b0049'}}>Welcome To the List Component</Text>
+
+
+  const { name, email } = props.route.params;
+
+  return (
+    <View style={{ marginBottom: 70, backgroundColor: "#3b82f680" }}>
+      <Text
+        style={{
+          fontSize: 30,
+          padding: 10,
+          textAlign: "center",
+          color: "#3b0049",
+        }}
+      >
+        Welcome To the List Component
+      </Text>
       <FlatList
         data={data}
-        renderItem={({item})=> <Text style={styles.item}>{item.name}</Text>}
-        keyExtractor={item=>item.id}
+        renderItem={({ item }) => <Text style={styles.item}>{item.name}</Text>}
+        keyExtractor={(item) => item.id}
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  item:{
-    fontSize:24,
-    padding:20,
-    color:'#fff',
-    borderColor:"Black",
-    borderWidth:1,
-    margin:10,
-    backgroundColor:"#072711",
-    borderRadius:10
-  }
-})
-
+  item: {
+    fontSize: 24,
+    padding: 20,
+    color: "#fff",
+    borderColor: "black",
+    borderWidth: 1,
+    margin: 10,
+    backgroundColor: "#072711",
+    borderRadius: 10,
+  },
+});
 
 export default Home;

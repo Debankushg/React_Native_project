@@ -16,13 +16,12 @@ const Login = () => {
 
   const handleSubmit = () => {
     const data = { name, email };
-    console.log(data);
     if (data.email === "" && data.name === "") {
       alert(`Please Fill your Name and Email`);
     } else {
-      alert(`Form Submitted!\nName: ${name}\nEmail: ${email}`);
+      // alert(`Form Submitted!\nName: ${name}\nEmail: ${email}`);
       // Navigate to the Home screen or perform any other action
-      navigation.navigate("Home");
+      navigation.navigate("Home", { email, name });
     }
   };
 
@@ -117,8 +116,10 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     borderWidth: 1,
     marginBottom: 16,
-    padding: 8,
-    width: "100%",
+    padding:10,
+    width: "80%",
+    borderRadius:8,
+    textAlign:"center"
   },
   button: {
     backgroundColor: "#2980b9",
