@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
-    width:"105%"
+    width: "105%",
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    fontWeight:"800",
+    fontWeight: "800",
     marginBottom: 16,
     color: "#e5ed00",
   },
@@ -131,11 +131,11 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     borderWidth: 1,
     marginBottom: 16,
-    paddingHorizontal: 20, 
-    width: "80%", 
+    paddingHorizontal: 20,
+    width: "80%",
     borderRadius: 8,
     // textAlign: "center",
-    color:"#CCC"
+    color: "#CCC",
   },
   button: {
     backgroundColor: "#2980b9",
